@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.context.request.WebRequest;
 
 // ── OLD javax.validation import ──
-import javax.validation.ConstraintViolationException;
+import jakarta.validation.ConstraintViolationException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -50,7 +50,7 @@ public class GlobalExceptionHandler {
                         .build());
     }
 
-    // ── OLD javax.validation.ConstraintViolationException ──
+    // ── OLD jakarta.validation.ConstraintViolationException ──
     @ExceptionHandler(ConstraintViolationException.class)
     public ResponseEntity<ApiResponse<Void>> handleConstraintViolation(
             ConstraintViolationException ex) {
