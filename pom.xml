@@ -8,7 +8,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.7.18</version>
+        <version>3.5.0</version>
         <relativePath/>
     </parent>
 
@@ -20,9 +20,9 @@
 
     <properties>
         <!-- OLD Java version - needs upgrade to 21 -->
-        <java.version>11</java.version>
-        <maven.compiler.source>11</maven.compiler.source>
-        <maven.compiler.target>11</maven.compiler.target>
+        <java.version>21</java.version>
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
 
         <!-- Library versions - some have known CVEs -->
         <springdoc.version>1.7.0</springdoc.version>
@@ -66,8 +66,8 @@
         <!-- ══ Springdoc OpenAPI (OLD v1 - for Spring Boot 2.x) ══ -->
         <dependency>
             <groupId>org.springdoc</groupId>
-            <artifactId>springdoc-openapi-ui</artifactId>
-            <version>${springdoc.version}</version>
+            <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+            <version>2.8.0</version>
         </dependency>
 
         <!-- ══ H2 In-Memory Database ══ -->
@@ -81,14 +81,14 @@
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
-            <version>${jackson.version}</version>
+            <!-- Boot 3.5.0 BOM manages this version -->
         </dependency>
 
         <!-- ══ SnakeYAML (OLD version - CVE-2022-1471) ══ -->
         <dependency>
             <groupId>org.yaml</groupId>
             <artifactId>snakeyaml</artifactId>
-            <version>${snakeyaml.version}</version>
+            <!-- Boot 3.5.0 BOM manages this version -->
         </dependency>
 
         <!-- ══ Commons Text (OLD version - CVE-2022-42889 "Text4Shell") ══ -->
@@ -136,4 +136,10 @@
         </plugins>
     </build>
 
+
+  <dependencyManagement><dependencies>
+        <!-- CVE overrides -->
+        <dependency><groupId>org.apache.logging.log4j</groupId><artifactId>log4j-core</artifactId><version>2.24.3</version></dependency>
+        <dependency><groupId>org.apache.commons</groupId><artifactId>commons-text</artifactId><version>1.13.0</version></dependency>
+  </dependencies></dependencyManagement>
 </project>
